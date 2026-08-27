@@ -395,7 +395,18 @@ body {
 @media (max-width: 620px) {
   html { scroll-padding-top: 72px; }
   .future-site main > section { scroll-margin-top: 72px; }
+  .future-nav { width: 100%; max-width: 100vw; }
+  .future-nav > a { grid-column: 1; grid-row: 1; }
+  .future-nav-tools { grid-column: 2; grid-row: 1; }
   .future-nav::after { left: 16px; right: 16px; }
+  .hero-intro h1 {
+    max-width: 100%;
+    font-size: clamp(40px, 12.2vw, 52px);
+    line-height: .94;
+    letter-spacing: -.065em;
+  }
+  .hero-intro h1 span { display: block; white-space: nowrap; }
+  .story-chapters h2 { max-width: 100%; font-size: clamp(42px, 13vw, 60px); }
   .domain-readout {
     position: relative;
     left: auto;
