@@ -3,23 +3,23 @@ import { createClient } from "@/lib/supabase/server";
 import type { Announcement, CompetitionRound, PublicContent } from "@/lib/types";
 
 const fallbackRounds: CompetitionRound[] = [
-  { id: "registration", round_name: "Registration", round_slug: "registration", description: "Form your alliance or enter as a solo designer.", opening_date: "2026-08-26T00:00:00+05:30", closing_date: "2026-09-20T23:59:59+05:30", visibility: true, status: "open" },
-  { id: "oracle", round_name: "The Oracle Challenge", round_slug: "oracle-challenge", description: "The first signal will be revealed soon.", opening_date: null, closing_date: null, visibility: true, status: "coming_soon" },
-  { id: "ascension", round_name: "The Ascension", round_slug: "ascension", description: "Selected visions advance toward Olympus.", opening_date: null, closing_date: null, visibility: true, status: "coming_soon" },
-  { id: "finale", round_name: "The Olympus Finale", round_slug: "olympus-finale", description: "A full product pitching competition at KDU.", opening_date: "2026-10-03T09:00:00+05:30", closing_date: "2026-10-03T18:00:00+05:30", visibility: true, status: "coming_soon" },
-  { id: "legacy", round_name: "The Legacy", round_slug: "legacy", description: "Winning visions enter the CreateX archive.", opening_date: null, closing_date: null, visibility: false, status: "coming_soon" }
+  { id: "registration", round_name: "Registration", round_slug: "registration", description: "Form your alliance or enter as a solo designer.", opening_date: "2026-09-02T00:00:00+05:30", closing_date: "2026-09-15T23:59:59+05:30", visibility: true, status: "coming_soon" },
+  { id: "oracle", round_name: "The Oracle Challenge", round_slug: "oracle-challenge", description: "The first signal will be revealed soon.", opening_date: "2026-09-18T00:00:00+05:30", closing_date: "2026-09-20T23:59:59+05:30", visibility: true, status: "coming_soon" },
+  { id: "ascension", round_name: "The Ascension", round_slug: "ascension", description: "The main workshop sharpens selected visions for the road to Olympus.", opening_date: "2026-09-24T00:00:00+05:30", closing_date: "2026-09-24T23:59:59+05:30", visibility: true, status: "coming_soon" },
+  { id: "finale", round_name: "The Olympus Finale", round_slug: "olympus-finale", description: "A full product pitching competition at KDU.", opening_date: "2026-10-11T09:00:00+05:30", closing_date: "2026-10-11T18:00:00+05:30", visibility: true, status: "coming_soon" },
+  { id: "legacy", round_name: "The Legacy", round_slug: "legacy", description: "Winning visions enter the CREA8X archive.", opening_date: null, closing_date: null, visibility: false, status: "coming_soon" }
 ];
 
 const fallback: PublicContent = {
-  heroAnnouncement: "Registration is now active",
-  registrationOpen: true,
+  heroAnnouncement: "Registration opens September 2",
+  registrationOpen: false,
   capacity: 500,
   registeredPeople: 0,
   teamsCount: 0,
   soloRegistrations: 0,
-  milestoneLabel: "Registration closes in",
-  milestoneDate: "2026-09-20T23:59:59+05:30",
-  finaleDate: "2026-10-03T09:00:00+05:30",
+  milestoneLabel: "September 15 at midnight",
+  milestoneDate: "2026-09-15T23:59:59+05:30",
+  finaleDate: "2026-10-11T09:00:00+05:30",
   venue: "KDU · Final venue to be confirmed",
   rounds: fallbackRounds,
   announcements: [],
@@ -40,7 +40,7 @@ export async function getPublicContent(): Promise<PublicContent> {
     return {
       ...fallback,
       heroAnnouncement: String(values.hero_announcement ?? fallback.heroAnnouncement),
-      registrationOpen: Boolean(values.registration_open ?? true),
+      registrationOpen: Boolean(values.registration_open ?? false),
       capacity: Number(values.registration_capacity ?? fallback.capacity),
       registeredPeople: Number((metrics as { total_players?: number } | null)?.total_players ?? 0),
       teamsCount: Number((metrics as { teams_count?: number } | null)?.teams_count ?? 0),
