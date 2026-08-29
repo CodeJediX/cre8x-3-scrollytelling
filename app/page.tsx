@@ -1,7 +1,7 @@
-import { PublicExperience } from "@/components/public-experience";
+import { PublicExperienceV2 } from "@/components/public-experience-v2";
 import { getPublicContent } from "@/lib/content";
 
 export default async function HomePage() {
   const content = await getPublicContent();
-  return <PublicExperience content={content} />;
+  return <PublicExperienceV2 content={content} />;
 }
