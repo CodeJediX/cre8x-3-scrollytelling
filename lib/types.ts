@@ -9,7 +9,7 @@ export interface CompetitionRound {
   id: string;
   round_name: string;
   round_slug: string;
-  description: string | null;
+  description: string;
   opening_date: string | null;
   closing_date: string | null;
   visibility: boolean;
