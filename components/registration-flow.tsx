@@ -31,7 +31,7 @@ export function RegistrationFlow({ configured }: { configured: boolean }) {
 
   async function submit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault(); setPending(true); setError("");
-    if (!configured) { setError("Registration preview is ready, but a CreateX Supabase project must be connected before records can be saved."); setPending(false); return; }
+    if (!configured) { setError("Registration preview is ready, but a CREA8X Supabase project must be connected before records can be saved."); setPending(false); return; }
     const formData = new FormData(event.currentTarget); formData.set("mode", mode);
     const idDocument = formData.get("studentIdDocument");
     const profileImage = formData.get("profileImage");
@@ -86,7 +86,7 @@ export function RegistrationFlow({ configured }: { configured: boolean }) {
     finally { setPending(false); }
   }
 
-  if (success) return <div className="registration-success glass-panel"><span>REGISTRATION SIGNAL CONFIRMED</span><h1>{success.title}</h1>{success.code && <div><small>CREATE X ID</small><b>{success.code}</b></div>}{success.teamCode && <div><small>ALLIANCE INVITE CODE</small><b>{success.teamCode}</b></div>}<p>Your eligibility is now pending review. Keep your invite code private except when sharing it with intended teammates.</p><Link className="primary-action" href="/dashboard">ENTER DASHBOARD <ArrowRight size={15} /></Link></div>;
+  if (success) return <div className="registration-success glass-panel"><span>REGISTRATION SIGNAL CONFIRMED</span><h1>{success.title}</h1>{success.code && <div><small>CREA8X ID</small><b>{success.code}</b></div>}{success.teamCode && <div><small>ALLIANCE INVITE CODE</small><b>{success.teamCode}</b></div>}<p>Your eligibility is now pending review. Keep your invite code private except when sharing it with intended teammates.</p><Link className="primary-action" href="/dashboard">ENTER DASHBOARD <ArrowRight size={15} /></Link></div>;
 
   if (mode === "choose" || mode === "team_choice") return (
     <div className="registration-choice">
